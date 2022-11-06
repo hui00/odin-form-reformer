@@ -33,7 +33,9 @@ class UsersController < ApplicationController
   def update
     //
     @user = User.find(params[:id])
-    if @user.update_columns(username: params[:user][:username])
+    # if @user.update_columns(username: params[:user][:username])
+    if @user.update(username: params[:user][:username])
+      puts(@user.valid?)
       # if @user.update(params.require(:user).permit(:username))
       puts("User updated")
       flash[:success] = 'User updated'
